@@ -1,0 +1,15 @@
+#!/bin/bash
+blue="\033[0;34m"
+brightblue="\033[1;34m"
+cyan="\033[0;36m"
+brightcyan="\033[1;36m"
+green="\033[0;32m"
+brightgreen="\033[1;32m"
+red="\033[0;31m"
+brightred="\033[1;31m"
+white="\033[1;37m"
+black="\033[0;30m"
+grey="\033[0;37m"
+darkgrey="\033[1;30m"
+
+printf "$blue blue\t\t$brightblue brightblue\t\t$cyan cyan\n$brightcyan brightcyan\t$green green\t\t\t$brightgreen brightgreen\n$red red\t\t$brightred brightred\t\t$white white\n$black black\t\t$grey grey\t\t$darkgrey darkgrey\n"
