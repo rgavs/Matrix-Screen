@@ -5,6 +5,7 @@ clear
 chars=(a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9 ^)
 count=${#chars[@]}
 # Color variables
+colors=(blue brightblue cyan brightcyan green brightgreen red brightred white black grey darkgrey)
 blue="\033[0;34m"
 brightblue="\033[1;34m"
 cyan="\033[0;36m"
@@ -30,6 +31,9 @@ if [[ $1 = -h ]]; then
   exit 0 # exit the script
 fi
 
+# if [[ $1 in ${colors[@]} ]]; then
+
+# fi
 
 # Get the size of the terminal window
 arr=($(stty size | tr " " "\n"))
@@ -37,23 +41,23 @@ height=${arr[0]}
 width=${arr[1]}
 
 while :
-do
-	# Cursor movement
-	y=$(($RANDOM % $height))
-	x=$(($RANDOM % $width))
-	echo $x $y
-	tmp=$(($RANDOM % $count))
-	echo $tmp ${arr[$(echo $tmp)]}
-	tput cup $y $x ${arr[$(($RANDOM % $count))]}
-	exit 0
-	# case $((RANDOM % $count)) in
-	# 	0)
-	# 	printf "zero\n\r"
-	# 	;;
-	# 	1)
-	# 	printf "one\n\r"
-	# 	;;
-	# 	*)
-	# 	printf "everything else\n\r"
-	# esac
+  do rand=$(( $RANDOM % 5))
+    case $rand in
+	  0)
+	  # Cursor movement
+	  y=$(($RANDOM % $height))
+	  x=$(($RANDOM % $width))
+	  tmp=$(($RANDOM % $count))
+	  tput cup $y $x
+	  printf ${chars[$tmp]}
+	  ;;
+	  1)
+	  printf " "
+	  ;;
+	  *)
+	  printf "\033[2C"
+	  ;;
+    esac
+  done
+  printf "\n"
 done
